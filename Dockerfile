@@ -203,6 +203,8 @@ RUN echo @testing http://nl.alpinelinux.org/alpine/edge/testing >> /etc/apk/repo
     curl \
     libcurl \
     git \
+    zip \
+    mongodb-tools \
     python \
     python-dev \
     py-pip \

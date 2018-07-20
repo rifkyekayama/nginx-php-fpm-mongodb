@@ -189,18 +189,6 @@ else
   fi
 fi
 
-# Run custom scripts
-if [[ "$RUN_SCRIPTS" == "1" ]] ; then
-  if [ -d "/var/www/html/scripts/" ]; then
-    # make scripts executable incase they aren't
-    chmod -Rf 750 /var/www/html/scripts/*; sync;
-    # run scripts in number order
-    for i in `ls /var/www/html/scripts/`; do /var/www/html/scripts/$i ; done
-  else
-    echo "Can't find script directory"
-  fi
-fi
-
 if [[ "$SKIP_COMPOSER" == "0" ]]; then
     # Try auto install for composer
     if [ -f "/var/www/html/composer.lock" ]; then
@@ -237,6 +225,18 @@ fi
 
 if [[ "$LARAVEL_DB_SEED" == "1" ]]; then
     php /var/www/html/artisan db:seed
+fi
+
+# Run custom scripts
+if [[ "$RUN_SCRIPTS" == "1" ]] ; then
+  if [ -d "/var/www/html/scripts/" ]; then
+    # make scripts executable incase they aren't
+    chmod -Rf 750 /var/www/html/scripts/*; sync;
+    # run scripts in number order
+    for i in `ls /var/www/html/scripts/`; do /var/www/html/scripts/$i ; done
+  else
+    echo "Can't find script directory"
+  fi
 fi
 
 # Start supervisord and services

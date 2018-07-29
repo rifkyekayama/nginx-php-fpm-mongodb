@@ -209,9 +209,9 @@ if [ -e "/var/www/html/.env.example" ]; then
 fi
 
 if [[ "$SET_STORAGE_PERMISSION" == "1" ]]; then
-    chmod 777 -R /var/www/html/storage
-		chmod 775 -R /var/www/html/public
-		chmod 777 -R /var/www/html/bootstrap/cache
+    chmod 777 -R /var/www/html/storage/
+		chmod 775 -R /var/www/html/public/
+		chmod 777 -R /var/www/html/bootstrap/cache/
 fi
 
 if [[ "$SET_LARAVEL_CRONJOB" == "1" ]]; then
